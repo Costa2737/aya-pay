@@ -32,7 +32,8 @@ export default async function handler(req, res) {
         amount: { value: selected.amount, currency: 'RUB' },
         confirmation: {
           type: 'redirect',
-          return_url: 'https://aya-academy.ru/?payment=success',
+          // Передаём тариф в return_url чтобы сайт знал какой курс открыть
+          return_url: `https://aya-academy.ru/?payment=success&tariff=${tariff}`,
         },
         capture: true,
         description: selected.description,
