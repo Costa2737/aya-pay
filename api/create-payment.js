@@ -8,9 +8,9 @@ export default async function handler(req, res) {
   const { tariff } = req.body;
 
   const tariffs = {
-    basic:    { amount: '690.00',  description: 'Курс «ИИ для детей» — Базовый тариф' },
-    advanced: { amount: '990.00',  description: 'Курс «ИИ для взрослых» — Продвинутый тариф' },
-    expert:   { amount: '1390.00', description: 'Курс «ИИ для бизнеса» — Экспертный тариф' },
+    basic:    { amount: '100.00',  description: 'Курс «ИИ для детей» — Базовый тариф (тест)' },
+    advanced: { amount: '100.00',  description: 'Курс «ИИ для взрослых» — Продвинутый тариф (тест)' },
+    expert:   { amount: '100.00', description: 'Курс «ИИ для бизнеса» — Экспертный тариф (тест)' },
   };
 
   const selected = tariffs[tariff];
@@ -32,7 +32,6 @@ export default async function handler(req, res) {
         amount: { value: selected.amount, currency: 'RUB' },
         confirmation: {
           type: 'redirect',
-          // Передаём тариф в return_url чтобы сайт знал какой курс открыть
           return_url: `https://aya-academy.ru/?payment=success&tariff=${tariff}`,
         },
         capture: true,
